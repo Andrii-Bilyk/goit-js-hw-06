@@ -14,17 +14,18 @@ const images = [
 ];
 
 
-const galleryList = document.querySelector('.gallery');
+const gallery = document.querySelector('.gallery');
 
-const createGalleryItem = (image) => {
-  return `<li class="gallery-item">
-  <img class="gallery-image" src="${image.url}" alt="${image.alt}"></li>`;
-};
+const imagesList = images.map((image) => 
+  `<li class="gallery-item">
+<img class="gallery-image" src="${image.url}" alt="${image.alt}"></li>`) 
+  .join('');
 
-const galleryItemsHTML = images.map(createGalleryItem).join('');
-galleryList.insertAdjacentHTML('beforeend', galleryItemsHTML);
+  gallery.insertAdjacentHTML('beforeend', imagesList);
 
-const galleryImage = document.querySelectorAll(".gallery .gallery-image");
+const galleryImage  = document.querySelectorAll(".gallery .gallery-image");
 
-galleryImage.forEach((img) => img.style.width = "100px");
+galleryImage.forEach((img) => {img.style.width = "200px"; img.style.height = "150px"});
 gallery.style.listStyle = 'none';
+gallery.style.display = 'flex';
+gallery.style.gap = "20px";
